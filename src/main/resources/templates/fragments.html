@@ -26,6 +26,22 @@
             </div>
         </div>
     </div>
+    <div th:fragment="view-search-results" th:if="${jobs}">
+            <table class="job-listing">
+                <tr>
+                    <td th:each="column : ${columns}">
+                        <span th:for="${column.key}" th:if="${column.value} != 'All'" th:text="${#strings.capitalizeWords(column.value)}"></span>
+                    </td>
+                </tr>
+                <tr th:each="items : ${jobs}">
+                    <td th:each="job : ${items}">
+                        <span th:text="${job.value}"></span>
+                    </td>
+                </tr>
+
+
+            </table>
+    </div>
 
 </body>
 </html>
